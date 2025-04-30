@@ -1,0 +1,18 @@
+def result(deno, amount):
+    n = len(deno)
+    deno.sort()
+    res = 0
+
+    for i in range(n - 1, -1, -1):
+        if amount >= deno[i]:
+            cnt = amount // deno[i]
+            res += cnt
+            amount -= cnt * deno[i]
+        if amount == 0:
+            break
+
+    return res
+
+deno = [1, 2, 5, 10, 20, 50, 100, 200, 500]
+n = int(input("Enter any amount: "))
+print("Minimum number of notes/coins:", result(deno, n))
